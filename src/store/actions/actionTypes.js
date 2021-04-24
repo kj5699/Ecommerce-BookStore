@@ -1,0 +1,12 @@
+export const SIGNUP_INIT='SIGNUP_INIT';
+export const SIGNUP_START='SIGNUP_START';
+export const SIGNUP_SUCCESS='SIGNUP_SUCCESS';
+export const SIGNUP_FAILED='SIGNUP_FAILED';
+
+export const SIGNIN_INIT='SIGNIN_INIT';
+export const SIGNIN_START='SIGNIN_START';
+export const SIGNIN_SUCCESS='SIGNIN_SUCCESS';
+export const SIGNIN_FAILED='SIGNIN_FAILED';
+export const LOGOUT='LOGOUT';
+
+export const FETCH_USER_DATA= 'FETCH_USER_DATA';

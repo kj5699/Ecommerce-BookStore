@@ -1,0 +1,16 @@
+.form-element{
+    margin:auto;
+    width:80%;
+    flex: 1;
+    margin:2rem;
+    
+    border-bottom: 4px solid #00695c;
+    .input{
+        border:none;
+        outline:0;
+        height: 2rem;
+    }
+    label{
+        margin-bottom:1rem;
+    }
+}
