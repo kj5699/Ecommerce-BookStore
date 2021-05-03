@@ -10,7 +10,9 @@ const initialState={
     isSignUp:false,
     error:null,
     SignInRedirectPath:'/',
-    isAuthenticated:false
+    isAuthenticated:false,
+    isAdmin:false,
+    loading:false,
 }
 
 const reducer =(state =initialState,action)=>{
@@ -20,17 +22,54 @@ const reducer =(state =initialState,action)=>{
         case(actionTypes.SIGNUP_START):
             return {...state, loading:true}
         case(actionTypes.SIGNUP_FAILED):
-            return {...state, loading:false, authError :action.error}
+            return {...state, loading:false, 
+                error :action.error}
         case(actionTypes.SIGNUP_SUCCESS):
-            return{...state, loading:false,isAuthenticated:true}
+            const newUser=action.isAdmin ? {...state.user, 
+                token: action.token,
+                userId: action.userId,
+                name:action.name,
+                email:action.email,
+            }:{...state.user, 
+                token: action.token,
+                userId: action.userId,
+                name:action.name,
+                email:action.email,
+                cart:action.cart
+            }
+            return{...state, 
+                loading:false,
+                isAuthenticated:true, 
+                user:newUser,
+                error:null,
+                isAdmin:action.isAdmin}
+        
         case(actionTypes.SIGNIN_INIT):
             return {...state, isSignUp:false}
         case(actionTypes.SIGNIN_START):
             return {...state, loading:true}
         case(actionTypes.SIGNIN_FAILED):
-            return {...state, loading:false, authError :action.error}
+            return {...state, loading:false, error : action.error}
         case(actionTypes.SIGNIN_SUCCESS):
-            return{...state, loading:false, isAuthenticated:true}
+            // console.log(action)
+            const loggedInUser= action.isAdmin ? {...state.user, 
+                token: action.token,
+                userId: action.userId,
+                name:action.name,
+                email:action.email,
+            }:
+            {...state.user, 
+                token: action.token,
+                userId: action.userId,
+                name:action.name,
+                email:action.email,
+                cart:action.cart 
+            }
+            return{...state, loading:false, 
+                    isAuthenticated:true, 
+                    user:loggedInUser,
+                    error:null,
+                    isAdmin:action.isAdmin}
         case(actionTypes.LOGOUT):
             console.log('logout reducer')
             const user={
@@ -40,6 +79,9 @@ const reducer =(state =initialState,action)=>{
                 email: '',
             }
             return{...state,user:user, isAuthenticated:false,error:null }
+        
+        
+            
 
         default:
             return state

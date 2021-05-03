@@ -3,7 +3,7 @@ import AuthForm from "../components/Auth/AuthForm";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import * as Actions from '../store/actions/index';
-import { withRouter } from "react-router";
+import { Redirect, withRouter } from "react-router";
 
 const Auth =props => {
     const inputs=props.isSignUp ?{
@@ -14,6 +14,9 @@ const Auth =props => {
         email:{},
         password:{},
     }
+    useEffect(()=>{
+
+    },[props.isAuthenticated])
     
 
     const [formState, inputHandler,setFormData] = useForm(inputs, false)
@@ -99,7 +102,7 @@ const Auth =props => {
                 email:formState.inputs.email.value,
                 password:formState.inputs.password.value,
             }
-            props.onSignUp(userData)
+            props.onSignUp(userData , props.isAdminAuth)
             
 
         }else{
@@ -107,28 +110,31 @@ const Auth =props => {
                 email:formState.inputs.email.value,
                 password:formState.inputs.password.value,
             }
-            props.onSignIn(userData)
+            props.onSignIn(userData,props.isAdminAuth)
         }
-            
-        
-
     }
     return (
-        
+            <>
+            {props.isAuthenticated && <Redirect to='/' />}
             <AuthForm formState={formState} 
                 inputHandler={inputHandler} 
                 submitHandler={submitHandler} 
                 isSignUp={props.isSignUp}
+                isAdminAuth={props.isAdminAuth}
             ></AuthForm>
-            
-        
+            </>
     )
 }
 
+const mapStateToProps =state=>{
+    return{
+        isAuthenticated:state.auth.isAuthenticated
+    }
+}
 const mapDispatchToProps=(dispatch) =>{
     return {
-        onSignIn : (userData)=>dispatch(Actions.signIn(userData)),
-        onSignup : (userData)=>dispatch(Actions.signUp(userData))
+        onSignIn : (userData,isAdminAuth)=>dispatch(Actions.signIn(userData, isAdminAuth)),
+        onSignUp : (userData,isAdminAuth)=>dispatch(Actions.signUp(userData, isAdminAuth)),
     }
 }
 

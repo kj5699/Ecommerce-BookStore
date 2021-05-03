@@ -41,6 +41,26 @@
         -moz-box-shadow: 0px 1px 6px 4px rgba(158,158,158,0.74);
         box-shadow: 0px 1px 6px 4px rgba(158,158,158,0.74);
         border-radius: 10px;
+
+        .errorMessage{
+            background-color: rgb(247, 67, 67);
+            opacity: 75%;
+            padding:1rem;
+            color:white;
+        }
+        .googleSignin{
+            margin-top:2rem;
+            
+            height:2rem;
+            .button{
+                color:#00695c;
+                background-color:white;
+                padding:0.3rem 1.2rem;
+                border: none;
+                box-shadow: 0px 1px 6px 4px rgba(158,158,158,0.74);
+            }
+
+        }
     }
     
     

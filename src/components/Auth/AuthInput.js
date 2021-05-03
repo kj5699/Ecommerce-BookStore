@@ -23,7 +23,7 @@ const inputReducer=(state, action) =>{
 
 const AuthInput = props => {
     const [inputState, dispatch] =useReducer(inputReducer,{
-        value:'',
+        value:props.value || '',
         isTouched:false,
         isValid: props.isValid || false
     })

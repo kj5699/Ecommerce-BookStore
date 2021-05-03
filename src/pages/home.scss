@@ -10,21 +10,5 @@
       }
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
-    .categorySection{
-      align-items:center;
-      .categoryHeader{
-        text-align: start;
-        width:100%;
-        margin:1rem 2rem ;
-        border-bottom: 3px solid grey;
-       
-  
-      }
-      .row{
-        overflow-x: auto;
-      }
-
-
-    }
     
 }

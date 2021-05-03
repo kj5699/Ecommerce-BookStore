@@ -1,47 +1,38 @@
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Col, Container, Row } from 'reactstrap';
-import CategoryCard from '../components/Products/CategoryCard';
-import ProductCard from '../components/Products/ProductCard';
-import ProductList from '../components/Products/ProductList';
+import CategorySection from '../components/Products/CategorySection';
+import * as Actions from '../store/actions/index'
 
 
-import {Categories, products} from '../data';
 import './home.scss'
-const Home = () => {
+const Home = props => {
+
+    useEffect(()=>{
+        props.onfetchProducts()
+        props.onfetchCategories()
+    },[])
     return (
         <div className="home">
-
-            
-
-                {Categories.map(category=>(
-                    <div className="categorySection">
-                        <div className="categoryHeader">
-                            <h3>{category.name}</h3>
-                        </div>
-                        <ProductList image={category.imageUrl} categoryId={category.id}></ProductList>
-    
-                    </div>
+                {props.categories.map(category=>(
+                    <CategorySection category={category}></CategorySection>
                 ))}
-            
-
-                {/* <Row>
-                {Categories.map(category=>(
-                <Col><CategoryCard 
-                key={category.id}
-                name={category.name}
-                id={category.id}
-                image={category.imageUrl}
-                description={category.description} />
-                </Col>
-                ))}
-
-                </Row> */}
-
-
-            
-            
         </div>
     )
 }
+const mapStateToProps =(state) =>{
+    return{
+        categories: state.shop.categories,
+        products:state.shop.products,
+        isAuthenticated: state.auth.isAuthenticated,
+        submitted: state.shop.submitted,
+    }
+}
+const mapDispatchToProps =(dispatch) =>{
+    return{
+        onfetchCategories:()=> dispatch(Actions.fetchCategory()),
+        onfetchProducts:()=> dispatch(Actions.fetchProducts())
+    }
+}
 
-export default withRouter(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Home));

@@ -24,6 +24,10 @@ $base-red: #00695c;
             margin-top:2px;
             margin-left:3px;
         }
+
+        svg{
+            vertical-align:auto;
+        }
     }
     a:after {
         content: "";

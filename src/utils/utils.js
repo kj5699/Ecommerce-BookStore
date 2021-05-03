@@ -30,6 +30,14 @@ export const checkValidity=(value, rules)=>{
     if (rules.isNotNegative){
         isValid= value >=0 && isValid;
     }
+    if (rules.isZipCode){
+        const pattern=/(^\d{6}$)/;
+        isValid = pattern.test(value) && isValid;
+    }
+    if (rules.isPhoneNumber){
+        const pattern=/(^\d{10}$)/;
+        isValid = pattern.test(value) && isValid;
+    }
     
     return isValid;
 }
