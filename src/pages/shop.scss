@@ -1,0 +1,13 @@
+.shop{
+    padding:2rem;
+    display:flex;
+    height:92vh;
+    max-height:92vh;
+    overflow: scroll;
+    ::-webkit-scrollbar {
+        display: none;
+      }
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; 
+    
+}

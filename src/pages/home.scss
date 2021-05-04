@@ -1,0 +1,14 @@
+.home{
+    padding:2rem;
+    display:flex;
+    flex-direction:column;
+    height:92vh;
+    max-height:92vh;
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+        display: none;
+      }
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    
+}

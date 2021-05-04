@@ -1,0 +1,109 @@
+$base-red: #00695c;
+
+.navigation{
+    z-index:999;
+    text-transform: capitalize;
+    position:fixed !important;
+    top:0 !important;
+    left:0 !important;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding: 0.5rem 1.5rem !important;
+    background-color: #3d4043;
+
+    .navbar-brand{
+        color:white;
+    }
+    a{
+        color: rgba(255,255,255,.9);
+        text-decoration:none;
+        font-size: 1rem;
+
+        span{
+            margin-top:2px;
+            margin-left:3px;
+        }
+
+        svg{
+            vertical-align:auto;
+        }
+    }
+    a:after {
+        content: "";
+        display: block;
+        width: 0;
+        border-bottom: 3px solid $base-red;
+        margin: 0 auto;
+        transition: all 0.2s linear 0s;
+        
+
+    }
+    a:active, a:hover {
+        color: rgba(255,255,255,1);
+        text-decoration: none;
+        font-size: 1.25rem;
+    }
+    // .nav-link:focus, .nav-link:hover{
+    //     color: rgba(255,255,255,1);
+    // }
+    a:hover:after {
+        max-width: 100px;
+        width: 100%;
+        color: $base-red;
+    }
+    .navbar-brand{
+        display:flex;
+        justify-content:space-between;
+        align-items: center;
+        margin:0 0.8rem;;
+        font-size: 1.2rem;
+        font-weight:700;
+        text-align: bottom;
+        
+
+        sub{
+            margin-left: 10px;
+            font-size: 1.5vw;
+            font-weight: 300;
+            color:rgb(201, 200, 200);
+
+            @media screen and (max-width: 768px) {
+                display:none;
+                
+            }
+        }
+        h3{
+            margin:0;
+            margin-top: auto;
+            line-height: normal;
+        }
+        
+        ;
+    }
+    .nav-item{
+        margin:auto 0.8rem;
+        font-size: 1.2rem;
+        font-weight:600;
+        color:white;
+        text-align: center;
+    }
+    .navbar-nav{
+        margin:auto;
+    }
+
+    .navbar-toggler{
+        padding: auto;
+        border-radius: 10px;
+        background-color: $base-red
+
+    }
+    .redBack:after{
+        content: "";
+        display: block;
+        width: 0;
+        border-bottom: 3px solid white;
+        margin: 0 auto;
+        transition: all 0.2s linear 0s;
+    }    
+}
