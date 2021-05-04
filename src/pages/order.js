@@ -21,13 +21,9 @@ const Orders = props => {
     console.log(props.orders)
     return (
         <>
-
-        
-
         <div className="cartWrapper">
             {props.orders&&props.orders.length>0 ? props.orders.map(order =>
-                
-                    <Container size="md" style={{margin:'auto'}}>
+                    <Container size="md" style={{margin:'5rem auto'}}>
                         <Row>
                             <Col xs='8' >
                             <strong>Product</strong>

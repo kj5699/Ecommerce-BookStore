@@ -86,7 +86,12 @@ const AuthForm = props => {
                 </g>
               </svg>
                     </span>
-                    <span class="button-label">Sign in with Google</span>
+                    <span class="button-label">
+                      Sign in with Google
+                      <br/>
+                      <sub>Coming Soon</sub>
+                      
+                      </span>
                 </div>
                 </a>
             </p>:null}

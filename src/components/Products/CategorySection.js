@@ -7,7 +7,6 @@ const CategorySection = props => {
             <div className="categoryHeader">
                 <h3>{props.category.name}</h3>
             </div>
-            
             <ProductList products={props.category.products}></ProductList>
         
         </div>

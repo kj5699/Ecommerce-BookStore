@@ -72,7 +72,30 @@
         
         .authHeader{
             width:100vw;
-            height: 15vh;
+            height: 20vh;
         }
+
+        .authForm{
+            margin:2rem auto;
+            width:60vw;
+            
+        }
+        
+    }
+}
+
+@media screen and (max-width:540px){
+    .authPage{
+        flex-direction: column;
+        
+        .authHeader{
+            width:100vw;
+            height: 25vh;
+        }
+
+        .authForm{
+            width:80vw;
+        }
+        
     }
 }

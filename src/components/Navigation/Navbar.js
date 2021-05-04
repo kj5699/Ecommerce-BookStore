@@ -65,11 +65,11 @@ const Navigation = (props) => {
                     <span>Home</span> 
               </NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
                 <NavLink to="/shop">
                   <span>Shop</span> 
                 </NavLink>
-            </NavItem>
+            </NavItem> */}
             </>:
             <NavItem>
             <NavLink to="/">
@@ -126,7 +126,7 @@ const Navigation = (props) => {
           <NavItem>
             <NavLink to='#'>
                 <BiUserCircle />
-                <span>Hi {props.user.name}</span>
+                <span>Hi {props.user.name.split(' ')[0] || props.user.name}</span>
             </NavLink>
           </NavItem>
           <NavItem onClick={()=>{setmodalOpen(true)}}>

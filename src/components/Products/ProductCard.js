@@ -4,16 +4,25 @@ import { FiEdit, FiHeart } from "react-icons/fi";
 import './ProductCard.scss';
 import { Button, Card, CardBody, CardFooter, CardImg, CardSubtitle, CardText, CardTitle } from "reactstrap";
 import { connect } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalComponent from "../UI/Modal";
 import { NavLink, Redirect, withRouter } from "react-router-dom";
 import * as Actions from "../../store/actions/index"
 
 
 const ProductCard = props => {
+    const [inCart, setInCart] =useState(false)
     const [modalOpen,setmodalOpen]=useState(false)
     const [authModalOpen,setAuthmodalOpen]=useState(false)
     const [authRedirect,setAuthRedirect]=useState(false)
+
+    useEffect(() =>{
+        if (props.cartItems.find(p=>{
+            return p.productId===props.product.id
+        })){
+            setInCart(true)
+        }
+    },[props.cartUpdated, inCart])
     const onClickedDelete = ()=>{
         props.onDeleteProduct(props.product.id, props.user.token);
       setmodalOpen(false);
@@ -28,11 +37,10 @@ const ProductCard = props => {
     const toggleAuth= ()=>{
         setAuthmodalOpen(prevState=>!prevState)
     }
-    
-   
     const addToCartHandler= ()=>{
         if(props.isAuthenticated){
         props.onAddToCart(props.id,1,props.user.token)
+        setInCart(true)
         }else{
             setAuthmodalOpen(true);
         }
@@ -104,9 +112,8 @@ const ProductCard = props => {
                         <AiOutlineFullscreen  className='buttonIcon' />
                         View
                     </NavLink>
-                    <NavLink to='#' onClick={addToCartHandler} >
+                    <NavLink to='#' onClick={addToCartHandler} className={inCart? 'inCart':null} >
                         <AiOutlineShoppingCart className='buttonIcon'/>
-
                         Add To Cart
                     </NavLink>
                 </>
@@ -123,6 +130,8 @@ const mapStateToProps = state => {
         isAdmin:state.auth.isAdmin,
         isAuthenticated:state.auth.isAuthenticated,
         user:state.auth.user,
+        cartItems:state.user.cart.items,
+        cartUpdated:state.user.cartUpdated
         
     }
 }
