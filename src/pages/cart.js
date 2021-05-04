@@ -34,7 +34,7 @@ const Cart = props => {
                     return(
                     <li key={p._id} className="productItem">
                     <div className="productImage">
-                        <img src={`http://localhost:5000/${p.productId.imagePath}`} alt={p.productId.name}></img>
+                        <img src={`${process.env.REACT_APP_BOOKSTORE_ASSET_URL}/${p.productId.imagePath}`} alt={p.productId.name}></img>
                     </div>
                     <div className="productBody">
                     

@@ -60,7 +60,7 @@ const ProductPage = props => {
                 {product?
                 <div className="productWrapper" style={{margin:'auto'}}>
                     <div className="productImage">
-                        <img src={`http://localhost:5000/${product.imagePath}`} alt={product.name}></img>
+                        <img src={`${process.env.REACT_APP_BOOKSTORE_ASSET_URL}/${product.imagePath}`} alt={product.name}></img>
                     </div>
                     <div className="productBody">
                     <h3 className="productTitle">{product.name}</h3>

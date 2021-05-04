@@ -119,7 +119,7 @@ export const getCart=( token)=>{
     return async dispatch=>{
         dispatch(getCartStart())
         try{
-            const response= await axios.get('http://localhost:5000/api/shop/cart',{headers:
+            const response= await axios.get(`${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/shop/cart`,{headers:
                     { 
                         Authorization: 'BEARER ' + token
                  }})
@@ -141,7 +141,7 @@ export const addToCart=(productId,quantity, token)=>{
             quantity:quantity
         }
         try{
-            const response= await axios.post('http://localhost:5000/api/shop/cart',data,{headers:
+            const response= await axios.post(`${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/shop/cart`,data,{headers:
                     {  'Content-Type': 'application/json',
                         Authorization: 'BEARER ' + token
                  }})
@@ -160,7 +160,7 @@ export const removeFromCart=(productId, token)=>{
     return async dispatch=>{
         dispatch(removeFromCartStart())
         try{
-            const response= await axios.delete(`http://localhost:5000/api/shop/cart/${productId}`,{headers:
+            const response= await axios.delete(`${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/shop/cart/${productId}`,{headers:
                     { 
                         Authorization: 'BEARER ' + token
                  }})
@@ -178,7 +178,7 @@ export const createOrder =(orderData, token) =>{
     return async dispatch=>{
         dispatch(createOrderStart())
         try{
-            const response= await axios.post('http://localhost:5000/api/shop/order', orderData,
+            const response= await axios.post(`${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/shop/order`, orderData,
             {headers:{
                 'Content-Type': 'application/json', 
                 Authorization: 'BEARER ' + token
@@ -199,7 +199,7 @@ export const fetchOrders =(token)=>{
     return async dispatch=>{
         dispatch(fetchOrderStart())
         try{
-            const response= await axios.get('http://localhost:5000/api/shop/order', 
+            const response= await axios.get(`${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/shop/order`, 
 
             {headers:{
                 Authorization: 'BEARER ' + token
@@ -219,7 +219,7 @@ export const cancelOrder =(orderId,token)=>{
         dispatch(cancelOrderStart())
         try{
             console.log(orderId,token)
-            const response= await axios.delete(`http://localhost:5000/api/shop/order/${orderId}`,
+            const response= await axios.delete(`${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/shop/order/${orderId}`,
             {headers:{ 
                 Authorization: 'BEARER ' + token
             }})

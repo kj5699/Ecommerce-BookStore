@@ -36,28 +36,27 @@ const CategoryCard = props => {
             </>
         </ModalComponent>}
        
-        <NavLink to={`/shop/category/${props.id}`} style={{ textDecoration: 'none', margin:0,padding:0 }} className="CategoryCard">
-        <Card style={{minWidth: '20vw',margin: '1rem 2rem', maxWidth: '20vw'}}>
-            <CardTitle>
+        <NavLink to={`/shop/category/${props.id}`} style={{ textDecoration: 'none', margin:0,padding:0 }} >
+        <Card className="CategoryCard">
+            
+            <CardImg src={`${process.env.REACT_APP_BOOKSTORE_ASSET_URL}/${props.image}`} alt={props.name}/>
+            <CardTitle >
             {props.name}
 
             </CardTitle>
-            <CardImg src={`http://localhost:5000/${props.image}`} alt={props.name}/>
-
             <CardFooter>
 
                 <CardLink>
                     <NavLink to='/'>View All Items</NavLink>
                 </CardLink>
-
+                {props.isAdmin && 
                 <CardLink>
                     <NavLink to={`/admin/category/${props.id}`}><AiFillEdit ></AiFillEdit></NavLink>
                     <NavLink to='#' onClick={()=>{setmodalOpen(true)}}><AiTwotoneDelete /></NavLink>
                 </CardLink>
+                }
             </CardFooter>
-        </Card>
-            
-            
+        </Card>   
         </NavLink>
         </>
     )
@@ -74,6 +73,4 @@ const mapDispatchToProps =dispatch => {
         onDeleteCategory : (id,token) =>dispatch(Actions.deleteCategory(id,token))
     }
 }
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryCard);

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import CategorySection from '../components/Products/CategorySection';
-import * as Actions from '../store/actions/index'
+import * as Actions from '../store/actions/index';
 
 
 import './home.scss'

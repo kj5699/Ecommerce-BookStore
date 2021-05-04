@@ -21,7 +21,7 @@ const FilterSidebar = props => {
         <FormGroup>
             <Label for="Category Box" className="formLabel">Categories</Label>
             <div>
-                {Categories.map((category)=>(
+                {props.categories.map((category)=>(
                     <CustomInput type="checkbox" 
                             id={category.id} 
                             label={category.name}

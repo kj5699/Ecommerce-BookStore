@@ -39,7 +39,7 @@ const AdminShop = props => {
         // console.log(props.products)
     },[props.categories, props.products])
     return (
-        <div className="shop">
+        <div className="adminshop">
             <header className='header'>
                 <div className='headerPagename'>
                     {pageName}
@@ -60,19 +60,14 @@ const AdminShop = props => {
                     <div>
                         <h3>View All Categories</h3>
                     </div>
-                
-                
-                <CategoryList categories={props.categories}></CategoryList>
+                    <CategoryList categories={props.categories}></CategoryList>
                 </div>
                 {props.categories.map(c=>(
                     <CategorySection category={c}/>
                     
                 ))}
                 </>
-                :
-
-                
-                console.log(pageName)
+                :null
                 }            
             </div>
         </div>

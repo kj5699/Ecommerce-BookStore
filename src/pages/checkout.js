@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { AiTwotoneDelete } from "react-icons/ai"
 import { connect } from "react-redux"
-import { Redirect, Route, withRouter } from "react-router"
-import { Button, Card, CardBody, CardFooter, CardHeader, CardTitle, Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import { Redirect, withRouter } from "react-router"
+import { Button, Card, CardBody, CardFooter, CardHeader, 
+    CardTitle, Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import AddressFrom from "../components/User/AddressFrom";
 import * as Actions from '../store/actions/index'
 import  './checkout.scss';

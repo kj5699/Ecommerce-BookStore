@@ -23,6 +23,7 @@
         box-shadow: 0px 0px 9px 0px rgba(133, 132, 132, 0.35);
         list-style: none;
         overflow-y: scroll;
+        flex-wrap:nowrap;
          /* IE and Edge */
         scrollbar-width: thin;
 
@@ -133,18 +134,18 @@
     }
     ul::-webkit-scrollbar {
         width: 0.3rem;              /* width of the entire scrollbar */
-      }
+    }
       
-      ul::-webkit-scrollbar-track {
+    ul::-webkit-scrollbar-track {
         background:#909091;
                /* color of the tracking area */
-      }
+    }
       
-      ul::-webkit-scrollbar-thumb {
+    ul::-webkit-scrollbar-thumb {
         background-color: #00695c;    /* color of the scroll thumb */
         border-radius: 20px;       /* roundness of the scroll thumb */
         border: 1px solid #737475;  /* creates padding around scroll thumb */
-      }
+    }
     
     .cartFooter{
         padding:1rem;

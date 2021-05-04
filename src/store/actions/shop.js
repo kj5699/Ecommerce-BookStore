@@ -153,7 +153,7 @@ export const addCategory =(categoryData,token)=>{
     return async dispatch=>{
         dispatch(addCategoryStart())
         console.log('sending',categoryData)
-        const URL= 'http://localhost:5000/api/admin/shop/category';
+        const URL= `${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/admin/shop/category`;
 
         // send post request
         try{
@@ -176,7 +176,7 @@ export const addProduct =(productData,token)=>{
         dispatch(addProductStart())
 
         // send post request
-        const URL= 'http://localhost:5000/api/admin/shop/product';
+        const URL= `${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/admin/shop/product`;
         try{
             const response=await axios.post(URL, productData, {
                 headers: {
@@ -196,7 +196,7 @@ export const addProduct =(productData,token)=>{
 export const fetchCategory=()=>{
     return async dispatch=>{
         dispatch(fetchCategoryStart())
-        const URL='http://localhost:5000/api/shop/categories'
+        const URL=`${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/shop/categories`
         try{
             const response= await axios.get(URL)
             // console.log(response)
@@ -213,7 +213,7 @@ export const fetchCategory=()=>{
 export const fetchProducts=()=>{
     return async dispatch=>{
         dispatch(fetchProductsStart())
-        const URL='http://localhost:5000/api/shop/products'
+        const URL=`${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/shop/products`
         try{
             const response= await axios.get(URL)
             // console.log(response)
@@ -232,7 +232,7 @@ export const updateProduct =(productData,id,token)=>{
         dispatch(addProductStart())
 
         // send post request
-        const URL= `http://localhost:5000/api/admin/shop/product/${id}`;
+        const URL= `${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/admin/shop/product/${id}`;
         try{
             const response=await axios.patch(URL, productData, {
                 headers: {
@@ -253,7 +253,7 @@ export const deleteProduct =(id,token)=>{
         dispatch(deleteProductStart())
 
         // send post request
-        const URL= `http://localhost:5000/api/admin/shop/product/${id}`;
+        const URL= `${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/admin/shop/product/${id}`;
         try{
             const response=await axios.delete(URL,{
                 headers: {
@@ -274,7 +274,7 @@ export const updateCategory =(productData,id,token)=>{
         dispatch(addCategoryStart())
 
         // send post request
-        const URL= `http://localhost:5000/api/admin/shop/category/${id}`;
+        const URL= `${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/admin/shop/category/${id}`;
         try{
             const response=await axios.patch(URL, productData, {
                 headers: {
@@ -295,7 +295,7 @@ export const deleteCategory =(id,token)=>{
         dispatch(deleteCategoryStart())
 
         // send post request
-        const URL= `http://localhost:5000/api/admin/shop/category/${id}`;
+        const URL= `${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/admin/shop/category/${id}`;
         try{
             const response=await axios.delete(URL,{
                 headers: {

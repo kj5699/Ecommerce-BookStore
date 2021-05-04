@@ -18,6 +18,9 @@ const ProductCard = props => {
         props.onDeleteProduct(props.product.id, props.user.token);
       setmodalOpen(false);
     }
+    const toggleDelete= ()=>{
+        setmodalOpen(prevState=>!prevState)
+    }
     const onClickedContinue = ()=>{
         setAuthRedirect(true)
       setmodalOpen(false);
@@ -25,9 +28,7 @@ const ProductCard = props => {
     const toggleAuth= ()=>{
         setAuthmodalOpen(prevState=>!prevState)
     }
-    const toggleDelete= ()=>{
-      setmodalOpen(prevState=>!prevState)
-    }
+    
    
     const addToCartHandler= ()=>{
         if(props.isAuthenticated){
@@ -71,11 +72,12 @@ const ProductCard = props => {
 
                 </>
             </ModalComponent>}
-        <Card className='productCard' style={{minWidth:'250px' }}>
+        <Card className='productCard' >
             
-            <img  src={`http://localhost:5000/${props.image}`} 
+            <img  src={`${process.env.REACT_APP_BOOKSTORE_ASSET_URL}/${props.image}`} 
                 alt={props.name} 
-                style={{width:'100%', height:'30vh', margin:'auto',maxWidth:'300px', borderRadius:'10px'}}
+                class='productImage'
+                
             ></img>
            
             <CardBody className='productCardBody'>

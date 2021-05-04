@@ -1,29 +1,29 @@
 
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Col, Container, Row } from 'reactstrap';
 import CategoryCard from '../components/Products/CategoryCard';
+import CategoryList from '../components/Products/CategoryList';
+import CategorySection from '../components/Products/CategorySection';
 import FilterSidebar from '../components/Products/FilterSidebar';
-import {Categories} from '../data';
 import * as Actions from '../store/actions/index';
 import './shop.scss';
 const Shop = props => {
-
-    console.log(props)
+    useEffect(()=>{
+        props.onfetchProducts()
+        props.onfetchCategories()
+    },[])
     return (
         <div className="shop">
-            <FilterSidebar />
+            <FilterSidebar categories={props.categories}/>
             <Container style={{maxHeight:'100%', overflow:'scroll'}}>
-            <Row>
-                {Categories.map(category=>(
-                <Col><CategoryCard key={category.id}
-                    name={category.name}
-                    id={category.id}
-                    image={category.imageUrl}
-                    description={category.description} />
-                </Col>
+                <section style={{minHeight:'60vh', margin:'auto'}}>
+                    <CategoryList categories={props.categories}></CategoryList>
+                </section>
+                {props.categories.map(category=>(
+                    <CategorySection category={category}></CategorySection>
                 ))}
-                </Row>
             </Container>
 
         </div>

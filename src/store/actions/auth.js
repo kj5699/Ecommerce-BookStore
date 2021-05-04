@@ -68,8 +68,8 @@ export const signUp = (userData,isAdminAuth)=>{
             password:userData.password,
         }
         const URL = isAdminAuth ?
-                    'http://localhost:5000/api/user/admin/signup':
-                    'http://localhost:5000/api/user/signup';
+                    `${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/user/admin/signup`:
+                    `${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/user/signup`;
         try{
             const response= await axios.post(URL,authData)
             // console.log(response.data)
@@ -113,8 +113,8 @@ export const signIn =(userData,isAdminAuth)=>{
         }
         //send request 
         const URL = isAdminAuth ?
-                    'http://localhost:5000/api/user/admin/login':
-                    'http://localhost:5000/api/user/login';
+                    `${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/user/admin/login`:
+                    `${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/user/login`;
         try{
             const response= await axios.post(URL,authData)
             const expirationTime= new Date(new Date().getTime() + (60 * 60 *1000))
@@ -156,8 +156,8 @@ export const logout=()=>{
 
 const getUserById = (userId,token ,isAdmin)=>{
     return async dispatch=>{
-        const URL= isAdmin==="true" ?`http://localhost:5000/api/user/admin/${userId}`:
-                            `http://localhost:5000/api/user/${userId}`
+        const URL= isAdmin==="true" ?`${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/user/admin/${userId}`:
+                            `${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/user/${userId}`
         console.log(isAdmin)
         try{
             console.log('sending request to' ,URL)
