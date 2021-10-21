@@ -153,7 +153,7 @@ class AddCategory extends Component{
             }
         }
         let form=(
-            <Form className="form" onSubmit={this.onSubmitHandler}>
+            <Form className="form" onSubmit={this.onSubmitHandler} style={{width:'70%', margin:'2rem auto'}}>
                 {formElements.map(element=>(
                     <Col key={element.id}>
                         <FormGroup>

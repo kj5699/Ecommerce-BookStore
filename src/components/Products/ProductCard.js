@@ -55,7 +55,10 @@ const ProductCard = props => {
     const onCardClickHandler=(e)=>{
         e.preventDefault()
         props.history.push(`/product/${props.id}`)
-
+    }
+    const onClickedEdit=(e)=>{
+        e.preventDefault()
+        props.history.push(`/admin/product/${props.id}`)
     }
     return (
         <>  
@@ -157,17 +160,16 @@ const ProductCard = props => {
          <Typography sx={{ mb:1 }} variant='subtitle2'>
          
     </Typography>}
-         <div className="d-flex flex-row justify-content-evenly">
+         <div className="d-flex flex-row justify-content-between ">
                 {props.isAdmin  ?
                 <>
-                <NavLink  to = {`/admin/product/${props.id}`}>
+                <IconButton color='primary' onClick = {onClickedEdit}>
                     <EditIcon />
-                    Edit
-                </NavLink>
-                <Button  onClick={()=>{setmodalOpen(true)}}>
+                    
+                </IconButton>
+                <IconButton color='error' onClick={()=>{setmodalOpen(true)}}>
                     <DeleteIcon />
-                    Delete
-                </Button>
+                </IconButton>
                 </>:
                 <>
                     <Button variant='contained' color='success'  sx={{ width:'100%', borderRadius:'1rem'}} onClick={addToCartHandler} className={inCart? 'inCart':null} >

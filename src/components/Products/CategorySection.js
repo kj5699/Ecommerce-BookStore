@@ -41,6 +41,4 @@ const CategorySection = props => {
         </div>
     )
 }
-
-
 export default CategorySection

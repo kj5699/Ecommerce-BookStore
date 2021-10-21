@@ -252,7 +252,7 @@ class AddItem extends Component{
         )
 
         let form=(
-            <Form className="form" onSubmit={this.onSubmitHandler}>
+            <Form className="form" onSubmit={this.onSubmitHandler} style={{width:'70%', margin:'2rem auto'}}>
             {formElmts}
             {!this.props.isEditMode?
             <Col>

@@ -113,12 +113,12 @@ const Navigation = (props) => {
                 <span>SignIn</span>
             </NavLink>
           </NavItem>
-          {/* <NavItem>
+          <NavItem>
             <NavLink to="/auth/admin/signin">
                 <FaSignInAlt></FaSignInAlt>
                 <span> Admin SignIn</span>
             </NavLink>
-          </NavItem> */}
+          </NavItem>
 
           
           </>:
