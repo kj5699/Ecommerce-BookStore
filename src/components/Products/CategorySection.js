@@ -2,6 +2,8 @@ import ProductList from "./ProductList"
 import './CategorySection.scss'
 import {useState, useEffect, useRef} from 'react';
 import  { Typography} from '@mui/material'; 
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 const CategorySection = props => {
     const [showMore, setShowMore]=useState(false)
     
@@ -22,13 +24,20 @@ const CategorySection = props => {
         props.category.products.length > 0 &&
         <div  className="categorySection" id={props.category.name}>
             <div className="categoryHeader">
-                
-                <Typography  variant="h5" >{props.category.name}</Typography>
-                <Typography sx={{mr:2 ,cursor: 'pointer'}} color='error' variant="subtitle2" onClick={()=>{setShowMore(prev=>!prev)}}>{showMore ? 'Show Less': 'Show All Items'}</Typography>
+                <Typography  variant="h5"> {props.category.name}</Typography>
             </div>
             <div className="d-flex flex-wrap">
                 <ProductList products={showMore?props.category.products:props.category.products.slice(0,Math.min(length,3))}></ProductList>
             </div>
+            {props.category.products.length>3?
+            <div className="d-flex my-2">
+                <Typography sx={{mx:'auto' ,cursor: 'pointer'}} color='error' variant="subtitle2" onClick={()=>
+                    {setShowMore(prev=>!prev)}}>
+                        {showMore ? 'Show Less': 'Show All Items'}
+                        {!showMore ? <KeyboardArrowDownIcon size='small' color='error' />: <KeyboardArrowUpIcon size='small' color='error' />}
+                
+                </Typography>
+            </div>:null}
         </div>
     )
 }

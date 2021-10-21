@@ -11,6 +11,7 @@ import { NavLink, Redirect, withRouter } from "react-router-dom";
 import * as Actions from "../../store/actions/index";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 
 const ProductCard = props => {
@@ -149,6 +150,13 @@ const ProductCard = props => {
            <Typography fontWeight="fontWeightRegular">&#8377; {props.price}</Typography>
            
          </div>
+         {inCart? <Typography sx={{ mb:1 }} variant='subtitle2'>
+              <CheckCircleOutlineIcon sx={{ mr:0.5 }} size="small" color="success"/>
+              Added to Cart
+         </Typography>:
+         <Typography sx={{ mb:1 }} variant='subtitle2'>
+         
+    </Typography>}
          <div className="d-flex flex-row justify-content-evenly">
                 {props.isAdmin  ?
                 <>
