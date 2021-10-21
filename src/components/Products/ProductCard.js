@@ -65,14 +65,15 @@ const ProductCard = props => {
             toggle={toggleDelete}
             header={'Confirm Delete'}
             footer={<>
-                    <Button color="primary" onClick={onClickedDelete}>Delete</Button>
-                    <Button color="secondary" onClick={toggleDelete}>Cancel</Button>
+                    <Button variant='contained' sx={{ml:1}} color="success" onClick={toggleDelete}>Cancel</Button>
+                    <Button variant='contained' sx={{ml:1}} color="error" onClick={onClickedDelete}>Delete</Button>
+                    
                     </>}
             >
                 <>
-                <h5>Do you want to Delete This Item ?</h5>
+                <Typography variant="body">Do you want to Delete This Item ?</Typography>
                 <br/>
-                <h5>{props.name}</h5>
+                <Typography variant="h5">{props.name}</Typography>
 
                 </>
             </ModalComponent>}
@@ -81,12 +82,13 @@ const ProductCard = props => {
             toggle={toggleAuth}
             header={'Continue to Login'}
             footer={<>
-                    <Button color="primary" onClick={onClickedContinue}>Continue</Button>
-                    <Button color="secondary" onClick={toggleAuth}>Cancel</Button>
+                    <Button  sx={{ml:1}} color="error" onClick={toggleAuth}>Cancel</Button>
+                    <Button  sx={{ml:1}} color="success" onClick={onClickedContinue}>Continue</Button>
+                    
                     </>}
             >
                 <>
-                <h5>You are not logged in, Please continue to log in</h5>
+                <Typography variant="body">You are not logged in, Please continue to log in</Typography>
                 
 
                 </>
