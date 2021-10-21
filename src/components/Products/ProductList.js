@@ -3,10 +3,16 @@
 import ProductCard from './ProductCard'
 import './ProductList.scss'
 
+
 const ProductList = props => {
+    
     return (
+        <>
         <div className="product-list">
-            {props.products && props.products.length>0?props.products.map(p=>(
+            {props.products && props.products.length>0?
+           
+            
+            props.products.map(p=>(
                 <ProductCard 
                 key={p.id}
                 id={p.id}
@@ -18,9 +24,14 @@ const ProductList = props => {
 
                 />
             )):
+            
+        
             <p>No Products in ths Category
-                </p>}
+                </p>
+            }
         </div>
+        
+        </>
     )
 }
 

@@ -2,12 +2,15 @@
 import { AiOutlineFullscreen, AiOutlineShoppingCart, AiTwotoneDelete } from "react-icons/ai"
 import { FiEdit, FiHeart } from "react-icons/fi";
 import './ProductCard.scss';
-import { Button, Card, CardBody, CardFooter, CardImg, CardSubtitle, CardText, CardTitle } from "reactstrap";
+// import { Button, Card, CardBody, CardFooter, CardImg, CardSubtitle, CardText, CardTitle } from "reactstrap";
+import { CardMedia,Button, IconButton, Typography, Card,CardContent, Box, ListItem, Switch } from '@mui/material';
 import { connect } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useHistory } from "react";
 import ModalComponent from "../UI/Modal";
 import { NavLink, Redirect, withRouter } from "react-router-dom";
-import * as Actions from "../../store/actions/index"
+import * as Actions from "../../store/actions/index";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 
 const ProductCard = props => {
@@ -15,6 +18,8 @@ const ProductCard = props => {
     const [modalOpen,setmodalOpen]=useState(false)
     const [authModalOpen,setAuthmodalOpen]=useState(false)
     const [authRedirect,setAuthRedirect]=useState(false)
+    const searchTags=['a','b','c','d','e']
+   
 
     useEffect(() =>{
         if (props.cartItems.find(p=>{
@@ -44,6 +49,12 @@ const ProductCard = props => {
         }else{
             setAuthmodalOpen(true);
         }
+    }
+
+    const onCardClickHandler=(e)=>{
+        e.preventDefault()
+        props.history.push(`/product/${props.id}`)
+
     }
     return (
         <>  
@@ -80,7 +91,7 @@ const ProductCard = props => {
 
                 </>
             </ModalComponent>}
-        <Card className='productCard' >
+        {/* <Card className='productCard' >
             
             <img  src={`${process.env.REACT_APP_BOOKSTORE_ASSET_URL}/${props.image}`} 
                 alt={props.name} 
@@ -120,7 +131,53 @@ const ProductCard = props => {
             
                 }
             </CardFooter>
-        </Card>
+        </Card> */}
+
+    <div className='item-card mr-3'>
+       <div className='menu-card' >
+         <img onClick={onCardClickHandler} src={`${process.env.REACT_APP_BOOKSTORE_ASSET_URL}/${props.image}`}  alt={props.name}></img>
+         <div onClick={onCardClickHandler} className="name-container">
+             <Typography className="dish-name" varient="h2" fontWeight="fontWeightMedium">{props.name}</Typography>
+         </div>
+         <div onClick={onCardClickHandler} className="card-content d-flex justify-content-between">
+           <div className="dish-description">
+             <Typography className="dish-info" color="textSecondary">{props.author}</Typography>
+           </div>
+           
+           <Typography fontWeight="fontWeightRegular">&#8377; {props.price}</Typography>
+           
+         </div>
+         <div className="d-flex flex-row justify-content-evenly">
+                {props.isAdmin  ?
+                <>
+                <NavLink  to = {`/admin/product/${props.id}`}>
+                    <EditIcon />
+                    Edit
+                </NavLink>
+                <Button  onClick={()=>{setmodalOpen(true)}}>
+                    <DeleteIcon />
+                    Delete
+                </Button>
+                </>:
+                <>
+                    <Button variant='contained' color='success'  sx={{ width:'100%', borderRadius:'1rem'}} onClick={addToCartHandler} className={inCart? 'inCart':null} >
+                        Add To Cart
+                    </Button>
+                </>
+                }
+
+       </div>
+           </div>
+       {/* <DeleteModal 
+         opened={showDeleteModal} 
+         toggle={toggleDelete} 
+         item={props.item} 
+         onClickedDelete={deleteItem} 
+         header={"Confirm Delete Item"}
+         additionalInfo={'Price : ' +props.item.price + ' Rs'}
+         >{"Do you want to delete this item?"}
+       </DeleteModal> */}
+   </div>
     </>
     )
 }

@@ -16,10 +16,12 @@ const Auth =props => {
     }
     useEffect(()=>{
 
-    },[props.isAuthenticated])
+    },[props.isAuthenticated,props.isAdminAuth,props.isSignup])
     
 
     const [formState, inputHandler,setFormData] = useForm(inputs, false)
+    
+    
     useEffect(()=>{
         if(props.isSignUp){
             setFormData({
@@ -89,10 +91,13 @@ const Auth =props => {
                     },
                     isValid:false
                 }},false)
+
         }
 
 
     },[props.isSignUp,setFormData])
+
+    
 
     const submitHandler=(event) => {
         event.preventDefault();
@@ -113,6 +118,7 @@ const Auth =props => {
             props.onSignIn(userData,props.isAdminAuth)
         }
     }
+    
     return (
             <>
             {props.isAuthenticated && <Redirect to='/' />}

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import { Redirect, withRouter } from "react-router";
-import { Button, Col, Container, FormGroup, Input, Label } from "reactstrap";
+import { Input } from "reactstrap";
+import {Button, Box } from '@mui/material';
 import ModalComponent from "../components/UI/Modal";
 import { products } from "../data";
 import * as Actions from '../store/actions/index'
@@ -39,7 +40,7 @@ const ProductPage = props => {
     },[quantity])
     return (
         
-        <Container fluid >
+        <Box  >
                 <>
                 {authRedirect && <Redirect to ='/auth/signin'></Redirect>}
                 {authModalOpen && <ModalComponent
@@ -73,8 +74,9 @@ const ProductPage = props => {
                     <div className="productDetails">
                     <p>Price: <strong>&#x20B9; {product.price} /-</strong></p>
 
-                    <p style={{color:!product.available?'red':'green', fontWeight:'bold'}}>{product.available ? "In Stock" : "Currently unavailable" }</p>
-                    <p style={{color:'blue'}}>( Only {product.quantity} left in stock. )</p>
+                        <p style={{color:!product.available?'red':'green', fontWeight:'bold'}}>{product.available ? "In Stock" : "Currently unavailable" }
+                        <span style={{color:'black', fontWeight:'small'}}>{` (Only ${product.quantity} left in stock. )`} </span>
+                        </p>
                     </div>
                     <div className="productQuantity">
                           
@@ -87,14 +89,10 @@ const ProductPage = props => {
                     </div>
                    
                     <div className="productActions">
-
                         
-                            
-                        
-                        
-                        <Button color="secondary" onClick={addToCartHandler}>
-                            Add to Cart
-                        </Button>
+                    <Button variant='contained' color='success'  sx={{ width:'100%', borderRadius:'1rem'}} onClick={addToCartHandler}  >
+                        Add To Cart
+                    </Button>
                     </div>
                     </div>
                     
@@ -102,7 +100,7 @@ const ProductPage = props => {
 
                 </div>:null}
                 </>
-        </Container>
+        </Box>
     )
 }
 const mapStateToProps =(state) =>{

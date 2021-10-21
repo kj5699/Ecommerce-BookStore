@@ -70,9 +70,31 @@
         .productDetails{
             margin: 0 1rem;
             display:flex;
+            flex-direction: column;
+            align-items: flex-start;
             p{
                 margin-right: 1rem;
             }
+        }
+    }
+
+}
+@media screen and (max-width:540px){
+    .productWrapper{
+    
+        width:90vw;
+        height: 92vh;
+        // background-color :rgb(255, 163, 163);
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        align-items:center;
+        padding:2rem;
+        .productImage{
+            width:100%
+        }
+        .productBody{
+            width:100%;
         }
     }
 

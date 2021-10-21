@@ -1,8 +1,9 @@
 .category-list{
     margin:auto 2rem;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items:center;
     overflow-x: scroll;
+    padding: 1rem;
 
 }

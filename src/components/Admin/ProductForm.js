@@ -39,7 +39,7 @@ class AddItem extends Component{
                     required:true,
                 },
                 valid:false,
-                touched:false
+                touched:true
             },
             name : {
                 type:'text',
@@ -114,10 +114,6 @@ class AddItem extends Component{
             console.log(updateForm)
             this.setState({AddItemForm: updateForm, formIsValid:true})
         }
-
-        
-        
-
     }
     
     onSubmitHandler=(e)=>{
@@ -188,10 +184,8 @@ class AddItem extends Component{
         let updatedItemForm ={...AddItemForm, 
             [id] : updatedElement
         }
-
         let formIsValid = this.state.formIsValid && isValid
         this.setState({AddItemForm: updatedItemForm, formIsValid:formIsValid})
-
     }
 
     render(){
@@ -259,9 +253,9 @@ class AddItem extends Component{
 
         let form=(
             <Form className="form" onSubmit={this.onSubmitHandler}>
-                {formElmts}
-                {!this.props.isEditMode?
-                <Col>
+            {formElmts}
+            {!this.props.isEditMode?
+            <Col>
                 <button className="btn btn-success" disabled={!this.state.formIsValid}>Add</button>
             </Col>:
             <Row>
