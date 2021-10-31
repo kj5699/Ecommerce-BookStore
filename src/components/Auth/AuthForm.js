@@ -55,7 +55,7 @@ const AuthForm = props => {
                     />)
                 }
                 {props.error && props.error.data&& <p className="errorMessage">{props.error.data["message"]}</p>}
-            <Button disabled={!props.formState.isValid} onClick={props.submitHandler} type='submit' >Submit</Button>
+            <Button  onClick={props.submitHandler} type='submit' >Submit</Button>
         
         {!props.isAdminAuth?<p className="googleSignin">
             <a href={`${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/api/auth/google/`} class="button">

@@ -25,7 +25,9 @@ const reducer =(state =initialState,action)=>{
         case(actionTypes.SIGNUP_FAILED):
             return {...state, loading:false, 
                 error :action.error}
+        
         case(actionTypes.SIGNUP_SUCCESS):
+            console.log('action', action)
             const newUser=action.isAdmin ? {...state.user, 
                 token: action.token,
                 userId: action.userId,
@@ -46,13 +48,13 @@ const reducer =(state =initialState,action)=>{
                 isAdmin:action.isAdmin,successMessage:action.message}
         
         case(actionTypes.SIGNIN_INIT):
-            return {...state, isSignUp:false,successMessage:null}
+            return {...state, isSignUp:false,successMessage:null, error:null}
         case(actionTypes.SIGNIN_START):
-            return {...state, loading:true,successMessage:null}
+            return {...state, loading:true,successMessage:null,error:null}
         case(actionTypes.SIGNIN_FAILED):
             return {...state, loading:false, error : action.error}
         case(actionTypes.SIGNIN_SUCCESS):
-            // console.log(action)
+            console.log(action)
             const loggedInUser= action.isAdmin ? {...state.user, 
                 token: action.token,
                 userId: action.userId,

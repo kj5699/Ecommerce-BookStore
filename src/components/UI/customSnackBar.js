@@ -33,10 +33,11 @@ const CustomSnackbar = ({type, message}) => {
         }
       );
     };
+    console.log('Snackbar Mounted')
     return (
         <Snackbar open={snackState.open} autoHideDuration={4000} onClose={handleClose} 
           TransitionComponent={snackState.Transition} anchorOrigin={{ vertical, horizontal}} 
-          sx={{ height:'3rem' , alignItems: 'center'}}>
+          sx={{ height:'3rem' , alignItems: 'center',zIndex:1500}}>
           
           <Alert onClose={handleClose} severity={type} sx={{ width: '100%',height:'100%', zIndex:1500 }}>
             {message}

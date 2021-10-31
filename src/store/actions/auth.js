@@ -90,15 +90,10 @@ export const signUp = (userData,isAdminAuth)=>{
                 }
                 dispatch(userInitialize(userData))
             }
-            
 
-
-
-
-            
         }catch(err){
-            console.log(err);
-            dispatch(signUpFailed(err))
+            console.log('Error message',err?.response?.data?.message)
+            dispatch(signUpFailed(err?.response?.data?.message))
         }
     })
 
@@ -123,7 +118,7 @@ export const signIn =(userData,isAdminAuth)=>{
             localStorage.setItem('expirationTime', expirationTime)
             localStorage.setItem('isAdmin', response.data.isAdmin)
             
-            // console.log(response.data)
+            console.log(response.data)
             dispatch(signInSuccess(response.data))
             if(!response.data.isAdmin){
                 const userData={
@@ -136,6 +131,7 @@ export const signIn =(userData,isAdminAuth)=>{
             }
         }catch(err){
             console.log(err.response);
+            console.log(err?.response?.data?.message)
             dispatch(signInFailed(err?.response?.data?.message))
         }
     }
@@ -175,7 +171,7 @@ const getUserById = (userId,token ,isAdmin)=>{
             
         }catch(err){
             console.log(err)
-            dispatch(signInFailed(err))
+            dispatch(signInFailed(err?.response?.data?.message))
         }
     }
 }

@@ -22,9 +22,14 @@ function App(props) {
 
   useEffect(() =>{
     props.checkAuth()
+    console.log(props.successMessage)
 
 
   },[])
+  useEffect(()=>{
+    console.log(props.successMessage)
+    console.log('App Error',props.error)
+  },[props.successMessage, props.error])
   let routes=(<Switch>
     <Route path="/" exact component={Home}></Route>
     <Route path="/shop" exact component={Shop}></Route>
@@ -72,9 +77,9 @@ function App(props) {
             </>:null
         }
         {
-            props.authError?
+            props.error?
             <>
-            <CustomSnackbar type="error" message={props.authError} ></CustomSnackbar>
+            <CustomSnackbar type="error" message={props.error} ></CustomSnackbar>
             </>:null
         }
     </div>
@@ -88,6 +93,7 @@ const mapStateToProps = (state)=>{
     isAdmin:state.auth.isAdmin,
     username:state.auth.user.name,
     successMessage:state.auth.successMessage,
+    error:state.auth.error
   }
 }
 const mapDispatchToProps = (dispatch)=>{
