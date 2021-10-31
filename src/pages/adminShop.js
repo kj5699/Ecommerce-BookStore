@@ -80,13 +80,14 @@ const AdminShop = props => {
                         onChange={onEditSearchString}
                     />
                     </div>
+                    <div className='headerActions'>
+                        <Button sx={{mx:1}}  color='primary' onClick={(e)=>handleAddButtons(e,'/admin/newCategory')}>Add category </Button>
+                        <Button sx={{mx:1}}  color='secondary'onClick={(e)=>handleAddButtons(e,'/admin/newItem')}>Add item </Button>
+                    </div>
 
                     
                 </Box>
-                <div className='headerActions'>
-                        <Button sx={{mx:1}}  color='primary' onClick={(e)=>handleAddButtons(e,'/admin/newCategory')}>Add category </Button>
-                        <Button sx={{mx:1}}  color='secondary'onClick={(e)=>handleAddButtons(e,'/admin/newItem')}>Add item </Button>
-                </div>
+                
                 
             </div>
             <Box>

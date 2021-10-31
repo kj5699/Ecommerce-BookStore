@@ -136,7 +136,7 @@ export const signIn =(userData,isAdminAuth)=>{
             }
         }catch(err){
             console.log(err.response);
-            dispatch(signInFailed(err.response))
+            dispatch(signInFailed(err?.response?.data?.message))
         }
     }
 

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router';
 import Navigation from './components/Navigation/Navbar';
+import CustomSnackbar from './components/UI/customSnackBar';
 import AdminShop from './pages/adminShop';
 import Auth from './pages/auth';
 import Cart from './pages/cart';
@@ -64,15 +65,29 @@ function App(props) {
       <main style={{marginTop:'8vh'}} onClick={closeNavbar}>
       {routes}
       </main>
+      {
+            props.successMessage?
+            <>
+            <CustomSnackbar type="success" message={props.successMessage} ></CustomSnackbar>
+            </>:null
+        }
+        {
+            props.authError?
+            <>
+            <CustomSnackbar type="error" message={props.authError} ></CustomSnackbar>
+            </>:null
+        }
     </div>
   );
 }
+
 
 const mapStateToProps = (state)=>{
   return {
     isAuthenticated:state.auth.isAuthenticated,
     isAdmin:state.auth.isAdmin,
-    username:state.auth.user.name
+    username:state.auth.user.name,
+    successMessage:state.auth.successMessage,
   }
 }
 const mapDispatchToProps = (dispatch)=>{
