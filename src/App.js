@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router';
 import Navigation from './components/Navigation/Navbar';
+import CustomSnackbar from './components/UI/customSnackBar';
 import AdminShop from './pages/adminShop';
 import Auth from './pages/auth';
 import Cart from './pages/cart';
@@ -21,9 +22,14 @@ function App(props) {
 
   useEffect(() =>{
     props.checkAuth()
+    console.log(props.successMessage)
 
 
   },[])
+  useEffect(()=>{
+    console.log(props.successMessage)
+    console.log('App Error',props.error)
+  },[props.successMessage, props.error])
   let routes=(<Switch>
     <Route path="/" exact component={Home}></Route>
     <Route path="/shop" exact component={Shop}></Route>
@@ -64,15 +70,30 @@ function App(props) {
       <main style={{marginTop:'8vh'}} onClick={closeNavbar}>
       {routes}
       </main>
+      {
+            props.successMessage?
+            <>
+            <CustomSnackbar type="success" message={props.successMessage} ></CustomSnackbar>
+            </>:null
+        }
+        {
+            props.error?
+            <>
+            <CustomSnackbar type="error" message={props.error} ></CustomSnackbar>
+            </>:null
+        }
     </div>
   );
 }
+
 
 const mapStateToProps = (state)=>{
   return {
     isAuthenticated:state.auth.isAuthenticated,
     isAdmin:state.auth.isAdmin,
-    username:state.auth.user.name
+    username:state.auth.user.name,
+    successMessage:state.auth.successMessage,
+    error:state.auth.error
   }
 }
 const mapDispatchToProps = (dispatch)=>{

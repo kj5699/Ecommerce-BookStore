@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '../UI/Button';
 import AuthInput from './AuthInput';
 import './AuthForm.scss'
@@ -12,12 +12,12 @@ const AuthForm = props => {
     let formElements=[];
     let inputKey;
     for (inputKey in props.formState.inputs){
-        
         formElements.push(
             {...props.formState.inputs[inputKey],id:inputKey}
         )
     }
-    
+    useEffect(()=>{
+    },[props.isSignUp])
     return (
         <div className="authPage">
             <div className="authHeader">
@@ -55,7 +55,8 @@ const AuthForm = props => {
                     />)
                 }
                 {props.error && props.error.data&& <p className="errorMessage">{props.error.data["message"]}</p>}
-            <Button disabled={!props.formState.isValid} onClick={props.submitHandler} type='submit' >Submit</Button>
+            <Button  onClick={props.submitHandler} type='submit' >Submit</Button>
+        
         {!props.isAdminAuth?<p className="googleSignin">
             <a href={`${process.env.REACT_APP_BOOKSTORE_BACKEND_URL}/api/auth/google/`} class="button">
             <div>
@@ -86,14 +87,18 @@ const AuthForm = props => {
                 </g>
               </svg>
                     </span>
-                    <span class="button-label">Sign in with Google</span>
+                    <span class="button-label">
+                      Sign in with Google
+                      <br/>
+                      <sub>Coming Soon</sub>
+                      
+                      </span>
                 </div>
                 </a>
             </p>:null}
             
-            </form>}
-
-        
+            </form>
+          }
         </div>
     )
 }

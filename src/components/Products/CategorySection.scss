@@ -3,20 +3,21 @@
     align-items:center;
     margin:2rem;
     .categoryHeader{
-      text-align: start;
+      text-align:start;
       width:100%;
-      margin:1rem 2rem;
-      border-bottom: 1px dotted #00657c;
+      margin:2rem 2rem;
+      border-bottom: 0.1px dotted #00657c;
+      display:flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      
       h3{
-        color:#00657c
-      }
-
+        margin:auto;
+        color:#00657c;
+        font-weight: 700;
+        font-family:'Courier New', Courier, monospace
 
     }
-    .row{
-      overflow-x: auto;
-    }
-
-
   }
 
+  }

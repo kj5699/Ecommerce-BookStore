@@ -123,7 +123,6 @@ export const getCart=( token)=>{
                     { 
                         Authorization: 'BEARER ' + token
                  }})
-            console.log(response)
             dispatch(getCartSuccess(response.data.cart))
 
         }catch(err){
@@ -145,7 +144,6 @@ export const addToCart=(productId,quantity, token)=>{
                     {  'Content-Type': 'application/json',
                         Authorization: 'BEARER ' + token
                  }})
-            console.log(response)
             dispatch(addToCartSuccess(response.data.cart))
 
         }catch(err){
@@ -183,7 +181,6 @@ export const createOrder =(orderData, token) =>{
                 'Content-Type': 'application/json', 
                 Authorization: 'BEARER ' + token
             }})
-            console.log(response)
             dispatch(createOrderSuccess(response.data.order))
 
             // console.log('Order created', orderData)

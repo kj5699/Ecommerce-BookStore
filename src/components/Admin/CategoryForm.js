@@ -71,8 +71,7 @@ class AddCategory extends Component{
             let updateForm={...this.state.AddCategoryForm}
             for ( InputElement in updateForm){
                 updateForm[InputElement].value=category[InputElement]
-                updateForm[InputElement].valid=true;
-                
+                updateForm[InputElement].valid=true; 
             }
             console.log(updateForm)
             this.setState({AddCategoryForm: updateForm, formIsValid:true})
@@ -90,22 +89,22 @@ class AddCategory extends Component{
     onSubmitHandler=(e)=>{
         e.preventDefault()
         if (this.props.isEditMode){
-        const categoryData =new FormData()
-        categoryData.append('name', this.state.AddCategoryForm.name.value)
-        categoryData.append('description', this.state.AddCategoryForm.description.value)
-        if(this.state.AddCategoryForm.image.value){
-            categoryData.append('image',this.state.AddCategoryForm.image.value)
-        }
-        console.log(categoryData)
-        this.props.onUpdateCategory(categoryData, this.props.match.params.id,this.props.user.token)
+            const categoryData =new FormData()
+            categoryData.append('name', this.state.AddCategoryForm.name.value)
+            categoryData.append('description', this.state.AddCategoryForm.description.value)
+            if(this.state.AddCategoryForm.image.value){
+                categoryData.append('image',this.state.AddCategoryForm.image.value)
+            }
+            console.log(categoryData)
+            this.props.onUpdateCategory(categoryData, this.props.match.params.id,this.props.user.token)
         }
         else{
-        const categoryData =new FormData()
-        categoryData.append('name', this.state.AddCategoryForm.name.value)
-        categoryData.append('description', this.state.AddCategoryForm.description.value)
-        categoryData.append('image', this.state.AddCategoryForm.image.value)
-        console.log(categoryData)    
-        this.props.onAddCategory(categoryData,this.props.user.token)
+            const categoryData =new FormData()
+            categoryData.append('name', this.state.AddCategoryForm.name.value)
+            categoryData.append('description', this.state.AddCategoryForm.description.value)
+            categoryData.append('image', this.state.AddCategoryForm.image.value)
+            console.log(categoryData)    
+            this.props.onAddCategory(categoryData,this.props.user.token)
         }
         
     }
@@ -152,11 +151,9 @@ class AddCategory extends Component{
                     config: this.state.AddCategoryForm[key]
                 })
             }
-
-            
         }
         let form=(
-            <Form className="form" onSubmit={this.onSubmitHandler}>
+            <Form className="form" onSubmit={this.onSubmitHandler} style={{width:'70%', margin:'2rem auto'}}>
                 {formElements.map(element=>(
                     <Col key={element.id}>
                         <FormGroup>

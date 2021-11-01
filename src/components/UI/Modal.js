@@ -5,11 +5,12 @@ import {
     ModalBody,
     ModalFooter, 
 } from 'reactstrap';
+import './Modal.scss'
 
 const ModalComponent = props=>{
     return(
         <div>
-          <Modal isOpen={props.opened} toggle={props.toggle} >
+          <Modal isOpen={props.opened} toggle={props.toggle}  className='modal-dialog' >
             <ModalHeader toggle={props.toggle}>{props.header}</ModalHeader>
             <ModalBody>
              {props.children}

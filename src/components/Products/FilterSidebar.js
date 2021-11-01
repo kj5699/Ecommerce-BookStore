@@ -31,12 +31,8 @@ const FilterSidebar = props => {
             
             </div>
       </FormGroup>
-      </Form>
-
-
-
-            
-        </div>
+      </Form> 
+    </div>
     )
 }
 
